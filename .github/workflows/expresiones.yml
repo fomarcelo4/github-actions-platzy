@@ -1,0 +1,33 @@
+name: Expresiones y condicionales
+run-name: Probando expresiones y condicionales de Github Actions
+on:
+  workflow_dispatch:
+    inputs:
+      calificacion:
+        description: 'Nota final'
+        required: true
+        type: number
+      nombre:
+        description: 'Tu nombre'
+        required: true
+        default: 'Juan'
+        type: string
+jobs:
+  excelente:
+    if: ${{ inputs.calificacion == 5 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo ${{ inputs.nombre }} tiene una nota excelente
+  aceptable:
+    if: ${{ inputs.calificacion < 5 && inputs.calificacion >= 3 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo ${{ inputs.nombre }} alcanzo a pasar la materia
+  no-aceptable:
+    if: ${{ inputs.calificacion < 3 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo ${{ inputs.nombre }} no alcanzo a pasar la materia      
