@@ -1,0 +1,12 @@
+name: contexto
+on: push
+jobs:
+  info-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Informacion repositorio
+        run: |
+          echo "Repositorio: ${{ github.repository }}"
+          echo "Rama: ${{ github.ref_name }}"
+          echo "Evento: ${{ github.event_name }}"
+          echo "Actor: ${{ github.actor }}"
